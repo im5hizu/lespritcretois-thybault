@@ -23,7 +23,7 @@ const singleProductLoader = (product) => {
     <article>
     <h3>${product.name}</h3>
     <div>
-        <figure><img src="/img/products/${product.category}/${product.subCategory}/${product.image}"></figure>
+        <figure><img src="./img/products/${product.category}/${product.subCategory}/${product.image}"></figure>
         <div>
             <p></p>
             ${product.description}
