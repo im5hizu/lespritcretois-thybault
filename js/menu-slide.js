@@ -7,7 +7,6 @@ export function loadMenuSlide(category, products) {
     const btOpenMenu = document.querySelector('#bt-categories');
     btOpenMenu.addEventListener('click', function(e) {
         const thisBtOpenMenu = this;
-       
     });
     
 }
