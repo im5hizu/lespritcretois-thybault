@@ -118,3 +118,4 @@ function imgRandomHeader(tabImg, dir) {
     const imgRandomUrl =  dir + imgRandom;
     return imgRandomUrl;
 }
+
