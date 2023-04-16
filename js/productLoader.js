@@ -52,11 +52,11 @@ const createProducts = (product) => {
   hrefProduct2.appendChild(productSpan);
 
   // Ajout des attributs
-  productImg.src = `/img/products/${product.category}/${product.subCategory}/${product.image}`;
+  productImg.src = `./img/products/${product.category}/${product.subCategory}/${product.image}`;
   hrefProduct.href = `${window.location.href}?id=${product.id}`;
   productH3.innerHTML = `${product.name}`;
   productSpan.innerHTML = `${productPriceDigits(productPrice)}€`;
-  hrefProduct2.href = `http://127.0.0.1:5500/produit-simple.html?id=${product.id}`;
+  hrefProduct2.href = `${thisUrl}/produit-simple.html?id=${product.id}`;
   hrefProduct2.id = "href"
 };
 
