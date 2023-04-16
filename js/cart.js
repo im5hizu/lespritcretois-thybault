@@ -77,11 +77,11 @@ const showProducts = (cart) => {
       const panierElement = document.getElementById("panier");
       formElement.style.display = "block";
       let totalPrice = 0;
+      const btnRecalculElement = document.getElementById("recalcul-panier");
       
 
       responseJson.products.forEach((product) => {
         cart.forEach(function (value, key) {
-          const btnRecalculElement = document.getElementById("recalcul-panier");
           if (key === product.id) {
             const total = product.price * value; // Calculer le prix total
             totalPrice += total
@@ -105,13 +105,13 @@ const showProducts = (cart) => {
             </table>
           `;
             tablePanier.insertAdjacentHTML("beforeend", innerHTML);
-            if (!btnRecalculElement) {
-              const btnHtml = `<button id="recalcul-panier">Recalculer le panier</button><div id="totalPrice">Total: ${totalPrice.toFixed(2)}€</div>`;
-              panierElement.insertAdjacentHTML("beforeend", btnHtml);
-            }
           }
         });
-      });
+      })
+      if (!btnRecalculElement) {
+        const btnHtml = `<button id="recalcul-panier">Recalculer le panier</button><div id="totalPrice">Total: ${totalPrice.toFixed(2)}€</div>`;
+        panierElement.insertAdjacentHTML("beforeend", btnHtml);
+      };
     })
     .catch((error) => console.error(error));
 };
