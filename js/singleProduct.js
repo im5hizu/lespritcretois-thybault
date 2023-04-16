@@ -1,4 +1,5 @@
-const urlJson = "http://127.0.0.1:5500/json/products.json";
+const thisUrl = window.location.origin;
+const urlJson = `${thisUrl}/json/products.json`;
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const productId = Number(urlParams.get("id"));
@@ -97,6 +98,7 @@ const singleProductLoader = (product) => {
     }
 
     console.log(cart);
+    window.location.reload()
   };
 
   btnAddToCart.addEventListener("click", (event) => {

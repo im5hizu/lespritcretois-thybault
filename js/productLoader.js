@@ -1,4 +1,5 @@
-const urlJson = "http://127.0.0.1:5500/json/products.json";
+const thisUrl = window.location.origin
+const urlJson = `${thisUrl}/json/products.json`;
 const productSection = document.getElementById("produits");
 const singleProductSection = document.getElementById("produit-simple");
 const ulProduct = document.createElement("ul");
