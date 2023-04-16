@@ -1,26 +1,63 @@
 const jsonUrl = "http://127.0.0.1:5500/json/products.json";
+const orderForm = document.forms["form-commande"];
+
 
 const loadCart = () => {
   const cartJson = localStorage.getItem("cart");
   const cartText = JSON.parse(cartJson);
   const cart = new Map(cartText);
-  
 
   if (!cartJson) {
-    console.log("pas de panier");
     noCart();
   } else {
-    console.log(cart);
-    showProducts(cart)
+    showProducts(cart);
+
+    orderForm.addEventListener('submit', (e)=>{
+      const formData = new FormData();
+    
+      // Ajouter les données du panier au formulaire
+      cart.forEach((value, key) => {
+        formData.append(`command[cart][${key}][id]`, key);
+        formData.append(`command[cart][${key}][qt]`, value);
+      });
+    
+      // Ajouter les données de livraison au formulaire
+      const shipping = {
+        Prenom: orderForm.elements["firstName"].value,
+        nom: orderForm.elements["lastName"].value,
+        adresse: orderForm.elements["adress"].value,
+        ville: orderForm.elements["city"].value,
+        telephone: orderForm.elements["tel"].value
+      };
+    
+      for (const key in shipping) {
+        if (shipping.hasOwnProperty(key)) {
+          const value = shipping[key];
+          if (value !== undefined && value !== null && value !== '') {
+            formData.append(`command[shipping][${key}]`, value);
+          }
+        }
+      }
+    
+      // Envoyer le formulaire
+      fetch('#', {
+        method: 'POST',
+        body: formData
+      })
+      .then(localStorage.clear())
+    });
+    
+       
   }
 };
+
+
 
 const noCart = () => {
   const panierHtml = document.getElementById("panier");
   const commandeHtml = document.getElementById("commande");
   const main = panierHtml.parentElement;
-
-  console.log(panierHtml, commandeHtml, main);
+  
   panierHtml.style.display = "none";
   commandeHtml.style.display = "none";
   main.innerHTML = "<div><p>Votre panier est vide!</p></div>";
@@ -46,7 +83,6 @@ const showProducts = (cart) => {
         if(key === product.id){
           const panierElement = document.getElementById('panier')
           const tablePanier = panierElement.firstElementChild
-          console.log(tablePanier)
           const innerHTML = `
           <tbody>
                 <tr>
@@ -71,4 +107,5 @@ const showProducts = (cart) => {
   })
   .catch((error) => console.error(error));
 }
+
 loadCart();

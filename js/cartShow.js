@@ -2,9 +2,9 @@ const cartJson = localStorage.getItem("cart");
 const cartText = JSON.parse(cartJson);
 const cart = new Map(cartText);
 const cartSpan = document.querySelector(".nbre-produits");
-const urlJson = "http://127.0.0.1:5500/json/products.json";
+const url = "http://127.0.0.1:5500/json/products.json";
 
-fetch(urlJson)
+fetch(url)
   .then((response) => response.json())
   .then((responseJson) => {
     let totalPrice = 0; // Initialiser la variable totalPrice à 0
