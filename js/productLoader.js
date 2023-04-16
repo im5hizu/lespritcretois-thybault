@@ -52,7 +52,7 @@ const createProducts = (product) => {
   hrefProduct2.appendChild(productSpan);
 
   // Ajout des attributs
-  productImg.src = `./img/products/${product.category}/${product.subCategory}/${product.image}`;
+  productImg.src = `${thisUrl}/img/products/${product.category}/${product.subCategory}/${product.image}`;
   hrefProduct.href = `${window.location.href}?id=${product.id}`;
   productH3.innerHTML = `${product.name}`;
   productSpan.innerHTML = `${productPriceDigits(productPrice)}€`;
