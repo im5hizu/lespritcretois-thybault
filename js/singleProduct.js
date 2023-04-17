@@ -38,11 +38,12 @@ const singleProductLoader = (product) => {
             ${product.description}
             <p></p>
             <footer>
-                <form id="cart"><input type="hidden" id="id" value="1"><input type="number" min="1" step="1" value="1"
-                        id="price"><span id="calcul-price">${
-                          productPriceDigits(productPrice) + "€"
-                        }</span><button type="submit" class="bt-cart"
-                        id="bt-cart" href="cart.html?id=1">Ajouter au panier</button></form>
+                <form id="cart">
+                  <input type="hidden" id="id" value="1">
+                  <input type="number" min="1" step="1" value="1" id="price">
+                  <span id="calcul-price">${productPriceDigits(productPrice)}€</span>
+                  <button type="submit" class="bt-panier" id="bt-panier" href="cart.html?id=1">Ajouter au panier</button>
+                </form>
             </footer>
         </div>
     </div>
@@ -61,7 +62,7 @@ const singleProductLoader = (product) => {
   });
 
   // Fonction ajout au cart
-  const btnAddToCart = document.getElementById("bt-cart");
+  const btnAddToCart = document.getElementById("bt-panier");
   let cart;
   let cartText;
 
