@@ -86,25 +86,19 @@ const showProducts = (cart) => {
             const total = product.price * value; // Calculer le prix total
             totalPrice += total
             const tablePanier = panierElement.firstElementChild;
+            const tBody = "<tbody><tr></tr></tbody>";
             const innerHTML = `
-          <tbody>
-                <tr>
-                    <td><img src="/img/products/${product.category}/${
-              product.subCategory
-            }/${product.image}"
-                            alt="${product.name}"></td>
+                    <td><img src="/img/products/${product.category}/${product.subCategory}/${product.image}"alt="${product.name}"></td>
                     <td>${product.name}</td>
                     <td>${product.price.toFixed(2)}€</td>
-                    <td><input type="number" id="${
-                      product.id
-                    }" min="1" max="50" value="${value}"></td>
+                    <td><input type="number" id="${product.id}" min="1" max="50" value="${value}"></td>
                     <td>${(product.price * value).toFixed(2)}€</td>
                     <td><a href="1" >X</a></td>
-                </tr>
-            </tbody>
-            </table>
           `;
-            tablePanier.insertAdjacentHTML("beforeend", innerHTML);
+            tablePanier.insertAdjacentHTML("beforeend", tBody);
+
+            const trTable = document.querySelector('table tbody tr')
+            trTable.insertAdjacentHTML('beforeend', innerHTML)
           }
         });
       })
