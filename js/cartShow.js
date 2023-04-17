@@ -28,3 +28,9 @@ export const cartShow = () => {
 };
 
 cartShow();
+
+if(!window.screen.availWidth <= 625){
+  console.log(false)
+  const menuMobile = document.getElementById('bt-categories');
+  menuMobile.style.display = "none"
+}
